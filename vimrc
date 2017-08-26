@@ -88,6 +88,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'godlygeek/tabular'
+Plug 'vimoutliner/vimoutliner'
 
 call plug#end()
 
