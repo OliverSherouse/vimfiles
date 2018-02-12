@@ -128,7 +128,8 @@ augroup END
 
 let g:formatdef_pandoc =
             \'"pandoc  --standalone --atx-headers --columns=79'.
-            \' -f markdown -t ".b:markdown_flavor'
+            \' -f ".b:markdown_flavor."+inline_notes'.
+            \'-t ".b:markdown_flavor'
 let g:formatters_markdown_pandoc = ['pandoc']
 
 "" Goyo & Limelight
@@ -144,3 +145,11 @@ augroup END
 let g:pandoc#syntax#conceal#use = 0
 let g:pandoc#syntax#codeblocks#embeds#langs = ['python', 'vim', 'make',
             \  'bash=sh', 'html', 'css', 'scss', 'javascript']
+
+"" Snakemake
+
+augroup snakemake
+    au! BufNewFile,BufRead Snakefile set syntax=snakemake
+    au! BufNewFile,BufRead *.smk set syntax=snakemake
+augroup END
+
