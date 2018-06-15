@@ -119,11 +119,10 @@ augroup markdown_flavor
                 \ let b:markdown_flavor="markdown_github".
                 \"+footnotes".
                 \"+yaml_metadata_block".
-                \"-hard_line_blocks"
 augroup END
 
 let g:formatdef_pandoc =
-            \'"pandoc  --standalone --atx-headers --columns=79'.
+            \'"pandoc  --standalone --atx-headers --wrap=none'.
             \' -f ".b:markdown_flavor."+inline_notes'.
             \'-t ".b:markdown_flavor'
 let g:formatters_markdown_pandoc = ['pandoc']
