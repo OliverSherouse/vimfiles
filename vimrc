@@ -118,7 +118,7 @@ augroup markdown_flavor
     au! BufNewFile,BufFilePre,BufRead */blog/*.markdown
                 \ let b:markdown_flavor="markdown_github".
                 \"+footnotes".
-                \"+yaml_metadata_block".
+                \"+yaml_metadata_block"
 augroup END
 
 let g:formatdef_pandoc =
