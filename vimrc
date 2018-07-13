@@ -81,7 +81,6 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'scrooloose/syntastic'
-Plug 'chiel92/vim-autoformat'
 
 """ Particular Functionality
 Plug 'junegunn/goyo.vim'
@@ -104,28 +103,7 @@ let g:mucomplete#enable_auto_at_startup = 1
 
 call add(g:mucomplete#chains['default'], 'ulti')
 
-"" Autoformat
-au! BufWrite * :Autoformat
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-
-augroup markdown_flavor
-    au! BufNewFile,BufFilePre,BufRead *.md 
-                \ let b:markdown_flavor="markdown"
-    au! BufNewFile,BufFilePre,BufRead *.markdown
-                \ let b:markdown_flavor="markdown"
-    au! BufNewFile,BufFilePre,BufRead */blog/*.markdown
-                \ let b:markdown_flavor="markdown_github".
-                \"+footnotes".
-                \"+yaml_metadata_block"
-augroup END
-
-let g:formatdef_pandoc =
-            \'"pandoc  --standalone --atx-headers --wrap=none'.
-            \' -f ".b:markdown_flavor."+inline_notes'.
-            \'-t ".b:markdown_flavor'
-let g:formatters_markdown_pandoc = ['pandoc']
+au! BufWritePre * :normal m'gg=G``````
 
 "" Goyo & Limelight
 autocmd! User GoyoEnter Limelight
