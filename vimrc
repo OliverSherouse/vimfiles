@@ -80,7 +80,6 @@ Plug 'lifepillar/vim-mucomplete'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
-Plug 'scrooloose/syntastic'
 
 """ Particular Functionality
 Plug 'junegunn/goyo.vim'
