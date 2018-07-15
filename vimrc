@@ -64,7 +64,7 @@ augroup END
 "" AutoFormat
 
 function! AutoFormat()
-    if &l:equalprg !=? ""
+    if &l:equalprg !=? "" || &l:indentexpr !=? ""
         :normal m'gg=G``````
     endif
 endfunction
