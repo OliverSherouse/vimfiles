@@ -54,9 +54,11 @@ nnoremap <Leader>q :bd <enter>
 
 noremap <Leader>x "+
 
-"" Python Version
-augroup python3
-    au! BufEnter *.py setlocal omnifunc=python3complete#Complete
+"" Quickfix
+augroup quickfix
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* nested cwindow
+    autocmd QuickFixCmdPost    l* nested lwindow
 augroup END
 
 

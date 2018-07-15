@@ -3,3 +3,5 @@ if executable('autopep8')
 else
     echo "For autoformatting install autopep8"
 endif
+
+setlocal omnifunc=python3complete#Complete
