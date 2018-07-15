@@ -61,6 +61,11 @@ augroup quickfix
     autocmd QuickFixCmdPost    l* nested lwindow
 augroup END
 
+"" AutoFormat
+augroup autoformat
+    autocmd!
+    autocmd BufWritePre * :normal m'gg=G``````
+augroup END
 
 " Plugins 
 
@@ -104,16 +109,18 @@ let g:mucomplete#enable_auto_at_startup = 1
 
 call add(g:mucomplete#chains['default'], 'ulti')
 
-au! BufWritePre * :normal m'gg=G``````
-
 "" Goyo & Limelight
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+augroup goyo_limelight
+    autocmd!
+    autocmd User GoyoEnter Limelight
+    autocmd User GoyoLeave Limelight!
+augroup END
 
 "" Pandoc
 augroup pandoc_syntax
-    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
-    au! BufNewFile,BufFilePre,BufRead *.markdown set filetype=markdown.pandoc
+    autocmd!
+    autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+    autocmd BufNewFile,BufFilePre,BufRead *.markdown set filetype=markdown.pandoc
 augroup END
 
 let g:pandoc#syntax#conceal#use = 0
@@ -123,7 +130,8 @@ let g:pandoc#syntax#codeblocks#embeds#langs = ['python', 'vim', 'make',
 "" Snakemake
 
 augroup snakemake
-    au! BufNewFile,BufRead Snakefile set syntax=snakemake
-    au! BufNewFile,BufRead *.smk set syntax=snakemake
+    autocmd! 
+    autocmd BufNewFile,BufRead Snakefile set syntax=snakemake
+    autocmd BufNewFile,BufRead *.smk set syntax=snakemake
 augroup END
 
