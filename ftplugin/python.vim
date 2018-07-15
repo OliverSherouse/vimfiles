@@ -1,7 +1,8 @@
 if executable('autopep8')
-    let &l:equalprg="autopep8 -aa -"
+    let &l:equalprg="yapf"
 else
-    echo "For autoformatting install autopep8"
+    echo "For autoformatting install yapf"
 endif
 
 setlocal omnifunc=python3complete#Complete
+compiler flake8
