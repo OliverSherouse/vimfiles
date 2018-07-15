@@ -62,9 +62,16 @@ augroup quickfix
 augroup END
 
 "" AutoFormat
+
+function! AutoFormat()
+    if &l:equalprg !=? ""
+        :normal m'gg=G``````
+    endif
+endfunction
+
 augroup autoformat
     autocmd!
-    autocmd BufWritePre * :normal m'gg=G``````
+    autocmd BufWritePre * call AutoFormat()
 augroup END
 
 " Plugins 
