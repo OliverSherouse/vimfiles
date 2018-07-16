@@ -42,6 +42,7 @@ let g:netrw_sizestyle = "H" " Human-readable file sizes
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " hide dotfiles
 let g:netrw_hide = 1 " hide dotfiles by default
 let g:netrw_banner = 0 " Turn off banner
+
 """ Explore in vertical buffer
 nnoremap <Leader>e :Explore! <enter>
 
@@ -94,6 +95,7 @@ Plug 'lifepillar/vim-mucomplete'
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 
 """ Particular Functionality
 Plug 'junegunn/goyo.vim'
