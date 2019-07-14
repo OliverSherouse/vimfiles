@@ -13,7 +13,7 @@ set nowrap
 
 "" Search and Substitute
 set gdefault " use global flag by default in s: commands
-set hlsearch " highlight searches
+set nohlsearch " highlight searches
 set ignorecase 
 set smartcase " don't ignore capitals in searches
 nnoremap <leader><space> :nohls <enter>
@@ -93,6 +93,7 @@ Plug 'flazz/vim-colorschemes'
 """ General Functionality
 Plug 'lifepillar/vim-mucomplete'
 Plug 'sirver/ultisnips'
+Plug 'neomake/neomake'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -111,12 +112,21 @@ set termguicolors
 colorscheme darth
 
 "" Autocompletion
+set omnifunc=syntaxcomplete#Complete
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c " Turn off completion messages
 
 let g:mucomplete#enable_auto_at_startup = 1 
+let g:mucomplete#buffer_relative_paths = 1
 
-call add(g:mucomplete#chains['default'], 'ulti')
+
+"" Neomake
+
+let g:neomake_place_signs = 0
+let g:neomake_open_list = 1
+call neomake#configure#automake('nrw')
+
+" call add(g:mucomplete#chains['default'], 'ulti')
 
 "" Goyo & Limelight
 augroup goyo_limelight
