@@ -1,8 +1,7 @@
-if executable('autopep8')
-    let &l:equalprg="yapf"
+setlocal shellredir=>%s
+if executable('black')
+    let &l:equalprg="black -l 79 -q -"
 else
-    echo "For autoformatting install yapf"
+    echo "For autoformatting install black"
 endif
-
-setlocal omnifunc=python3complete#Complete
-compiler flake8
+let b:neomake_python_enabled_makers = ['flake8']
