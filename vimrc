@@ -5,6 +5,7 @@ let mapleader = ','
 set hidden " Allow background buffers without saving
 set spell spelllang=en_us
 set splitright " Split to right by default
+set backupcopy=yes " Copy to backup (for Parcel file-watcher)
 
 "" Text Wrapping
 set textwidth=79
@@ -16,7 +17,6 @@ set gdefault " use global flag by default in s: commands
 set nohlsearch " highlight searches
 set ignorecase 
 set smartcase " don't ignore capitals in searches
-nnoremap <leader><space> :nohls <enter>
 
 "" Tabs
 set tabstop=4
