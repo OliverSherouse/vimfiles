@@ -8,8 +8,8 @@ set splitright " Split to right by default
 set backupcopy=yes " Copy to backup (for Parcel file-watcher)
 
 "" Text Wrapping
-set textwidth=79
-set colorcolumn=80
+set textwidth=80
+set colorcolumn=81
 set nowrap
 
 "" Search and Substitute
@@ -92,7 +92,9 @@ Plug 'flazz/vim-colorschemes'
 
 """ General Functionality
 Plug 'lifepillar/vim-mucomplete'
-Plug 'sirver/ultisnips'
+Plug 'MarcWeber/vim-addon-mw-utils' " for Snipmate
+Plug 'tomtom/tlib_vim' " for Snipmate
+Plug 'garbas/vim-snipmate'
 Plug 'neomake/neomake'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
@@ -119,14 +121,24 @@ set shortmess+=c " Turn off completion messages
 let g:mucomplete#enable_auto_at_startup = 1 
 let g:mucomplete#buffer_relative_paths = 1
 
+"" Snippets
+
+let g:snipMate = {}
+let g:snipMate['no_match_completion_feedkeys_chars'] = ''
+let g:snipMate['description_in_completion'] = 1
+
+call insert(g:mucomplete#chains['default'], 'snip')
+
+imap <expr> <c-j> (pumvisible()?"\<c-y>":"")."\<plug>snipMateNextOrTrigger"
+imap <expr> <c-k> <plug>snipMateBack
 
 "" Neomake
 
 let g:neomake_place_signs = 0
 let g:neomake_open_list = 1
+
 call neomake#configure#automake('nrw')
 
-" call add(g:mucomplete#chains['default'], 'ulti')
 
 "" Goyo & Limelight
 augroup goyo_limelight

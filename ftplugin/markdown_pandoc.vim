@@ -8,7 +8,7 @@ if executable('pandoc')
     else
         let b:markdown_flavor="markdown-simple_tables"
     endif
-    let &l:equalprg="pandoc  --standalone --atx-headers --columns=79 -f "
+    let &l:equalprg="pandoc  --standalone --atx-headers --columns=80 -f "
                 \.b:markdown_flavor."+inline_notes -t ".b:markdown_flavor
 else
     echo "For autoformatting install pandoc"
