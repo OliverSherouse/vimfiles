@@ -28,6 +28,11 @@ set expandtab
 "" Folding
 set foldmethod=syntax
 
+"" Matching
+packadd! matchit
+
+
+
 "" Backup, Swap and Undo
 set undofile " Persistent Undo
 if has("win32")
