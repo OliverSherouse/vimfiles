@@ -135,9 +135,10 @@ imap <expr> <c-k> <plug>snipMateBack
 "" Neomake
 
 let g:neomake_place_signs = 0
-let g:neomake_open_list = 1
+let g:neomake_open_list = 2
+let g:neomake_tex_enabled_makers = ['chktex', 'proselint']
 
-call neomake#configure#automake('nrw')
+call neomake#configure#automake('nrwi', 500)
 
 
 "" Goyo & Limelight
