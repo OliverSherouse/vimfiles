@@ -1,6 +1,6 @@
 setlocal shellredir=>%s
 if executable('black')
-    let &l:equalprg="black -q -"
+    let &l:equalprg="black -q --fast -"
 else
     echo "For autoformatting install black"
 endif
