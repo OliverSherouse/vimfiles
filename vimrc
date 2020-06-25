@@ -24,6 +24,10 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
+
+"" Folding
+set foldmethod=syntax
+
 "" Backup, Swap and Undo
 set undofile " Persistent Undo
 if has("win32")
@@ -99,6 +103,7 @@ Plug 'neomake/neomake'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
+Plug 'Konfekt/FastFold'
 
 """ Particular Functionality
 Plug 'junegunn/goyo.vim'
@@ -106,6 +111,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'godlygeek/tabular'
 Plug 'vimoutliner/vimoutliner'
+Plug 'tmhedberg/SimpylFold'
 
 call plug#end()
 
