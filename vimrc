@@ -74,7 +74,7 @@ augroup END
 "" AutoFormat
 
 function! AutoFormat()
-    if &l:equalprg !=? "" || &l:indentexpr !=? ""
+    if &l:equalprg !=? ""
         :normal m'gg=G``````
     endif
 endfunction
@@ -108,6 +108,7 @@ Plug 'neomake/neomake'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
 Plug 'Konfekt/FastFold'
 
 """ Particular Functionality
@@ -178,3 +179,4 @@ augroup snakemake
     autocmd BufNewFile,BufRead *.smk set syntax=snakemake
 augroup END
 
+let g:SimpylFold_fold_docstring = 0
