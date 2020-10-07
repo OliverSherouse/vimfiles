@@ -2,7 +2,7 @@ setlocal softtabstop=2
 setlocal shiftwidth=2
 setlocal shellredir=>%s
 if executable('standard')
-    let &l:equalprg="standard --fix --stdin"
+    let &l:formatprg="standard --fix --stdin"
 else
     echo "For autoformatting install standard"
 endif

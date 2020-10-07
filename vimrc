@@ -8,8 +8,8 @@ set splitright " Split to right by default
 set backupcopy=yes " Copy to backup (for Parcel file-watcher)
 
 "" Text Wrapping
-set textwidth=80
-set colorcolumn=81
+" set textwidth=80
+" set colorcolumn=81
 set nowrap
 
 "" Search and Substitute
@@ -74,8 +74,11 @@ augroup END
 "" AutoFormat
 
 function! AutoFormat()
-    if &l:equalprg !=? ""
-        :normal m'gg=G``````
+    if &l:formatprg !=? ""
+        :mark Q
+        :normal gggqG
+        :normal g'Q
+        :delm Q
     endif
 endfunction
 
@@ -112,6 +115,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Konfekt/FastFold'
 
 """ Particular Functionality
+Plug 'davidhalter/jedi-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -149,6 +153,15 @@ imap <expr> <c-k> <plug>snipMateBack
 let g:neomake_place_signs = 0
 let g:neomake_open_list = 2
 let g:neomake_tex_enabled_makers = ['chktex', 'proselint']
+let g:neomake_Dockerfile_hadolint_maker = {
+          \ 'output_stream': 'stdout',
+          \ 'uses_stdin': 1,
+          \ 'args': ['--format', 'tty'],
+          \ 'errorformat': '%f:%l %m',
+          \ }
+let g:neomake_Dockerfile_enabled_makers = ['hadolint']
+
+
 
 call neomake#configure#automake('nrwi', 500)
 
@@ -180,3 +193,4 @@ augroup snakemake
 augroup END
 
 let g:SimpylFold_fold_docstring = 0
+
