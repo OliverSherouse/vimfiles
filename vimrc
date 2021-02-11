@@ -87,6 +87,13 @@ augroup autoformat
     autocmd BufWritePre * call AutoFormat()
 augroup END
 
+"" Poetry
+
+if file_readable('pyproject.toml')
+    let $PATH = trim(system('poetry env info -p'))."/bin:".$PATH
+endif
+
+
 " Plugins 
 
 "" Installation with VimPlug
