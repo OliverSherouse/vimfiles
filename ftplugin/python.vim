@@ -4,5 +4,5 @@ if executable('black')
 else
     echo "For autoformatting install black"
 endif
-let b:neomake_python_enabled_makers = ['flake8']
-compiler pytest
+
+let b:linter = "flake8"

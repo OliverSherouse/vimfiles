@@ -46,7 +46,8 @@ else
 endif
 
 """ NetRW
-let g:netrw_liststyle=1 " Detail View
+let g:netrw_liststyle=3 " Detail View
+let g:netrw_sort_by="exten"
 let g:netrw_sizestyle = "H" " Human-readable file sizes
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " hide dotfiles
 let g:netrw_hide = 1 " hide dotfiles by default
@@ -87,6 +88,13 @@ augroup autoformat
     autocmd BufWritePre * call AutoFormat()
 augroup END
 
+"" Lint
+
+augroup autolint
+    autocmd!
+    autocmd BufWritePost * if exists('b:linter') | execute ":Dispatch ".b:linter." %" | endif
+augroup END
+
 "" Poetry
 
 if file_readable('pyproject.toml')
@@ -114,7 +122,6 @@ Plug 'lifepillar/vim-mucomplete'
 Plug 'MarcWeber/vim-addon-mw-utils' " for Snipmate
 Plug 'tomtom/tlib_vim' " for Snipmate
 Plug 'garbas/vim-snipmate'
-Plug 'neomake/neomake'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -147,6 +154,7 @@ let g:mucomplete#buffer_relative_paths = 1
 "" Snippets
 
 let g:snipMate = {}
+let g:snipMate = { 'snippet_version' : 1 }
 let g:snipMate['no_match_completion_feedkeys_chars'] = ''
 let g:snipMate['description_in_completion'] = 1
 
@@ -154,24 +162,6 @@ call insert(g:mucomplete#chains['default'], 'snip')
 
 imap <expr> <c-j> (pumvisible()?"\<c-y>":"")."\<plug>snipMateNextOrTrigger"
 imap <expr> <c-k> <plug>snipMateBack
-
-"" Neomake
-
-let g:neomake_place_signs = 0
-let g:neomake_open_list = 2
-let g:neomake_tex_enabled_makers = ['chktex', 'proselint']
-let g:neomake_Dockerfile_hadolint_maker = {
-          \ 'output_stream': 'stdout',
-          \ 'uses_stdin': 1,
-          \ 'args': ['--format', 'tty'],
-          \ 'errorformat': '%f:%l %m',
-          \ }
-let g:neomake_Dockerfile_enabled_makers = ['hadolint']
-
-
-
-call neomake#configure#automake('nrwi', 500)
-
 
 "" Goyo & Limelight
 augroup goyo_limelight
