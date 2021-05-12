@@ -1,9 +1,8 @@
 setlocal softtabstop=2
 setlocal shiftwidth=2
-setlocal shellredir=>%s
-if executable('standard')
-    let &l:formatprg="standard --fix --stdin"
+if executable("prettier")
+    let &l:formatprg="prettier --parser=babel"
 else
-    echo "For autoformatting install standard"
+    echo "For autoformatting install prettier"
 endif
-let b:neomake_javascript_enabled_makers = ['standard']
+let b:neomake_javascript_enabled_makers = ['eslint']

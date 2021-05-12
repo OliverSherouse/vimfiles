@@ -9,7 +9,7 @@ set backupcopy=yes " Copy to backup (for Parcel file-watcher)
 
 "" Text Wrapping
 " set textwidth=80
-" set colorcolumn=81
+set colorcolumn=81
 set nowrap
 
 "" Search and Substitute
@@ -63,6 +63,11 @@ nnoremap <C-L> :bn <enter>
 nnoremap <Leader>w :w <enter>
 nnoremap <Leader>q :bd <enter>
 
+nnoremap <silent> ]c :cnext <enter>
+nnoremap <silent> [c :cprev <enter>
+nnoremap <silent> ]l :lnext <enter>
+nnoremap <silent> [l :lprev <enter>
+
 noremap <Leader>x "+
 
 "" Quickfix
@@ -97,7 +102,9 @@ augroup END
 
 "" Poetry
 
-if file_readable('pyproject.toml')
+if file_readable('.venv/bin/activate')
+    let $PATH = trim(system('pwd'))."/.venv/bin:".$PATH
+elseif file_readable('pyproject.toml')
     let $PATH = trim(system('poetry env info -p'))."/bin:".$PATH
 endif
 
@@ -116,6 +123,7 @@ endif
 Plug 'tpope/vim-sensible'
 Plug 'sheerun/vim-polyglot'
 Plug 'flazz/vim-colorschemes'
+Plug 'Konfekt/vim-compilers'
 
 """ General Functionality
 Plug 'lifepillar/vim-mucomplete'
@@ -127,6 +135,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'Konfekt/FastFold'
+
+""" Compilers
+
+Plug 'salomvary/vim-eslint-compiler'
 
 """ Particular Functionality
 Plug 'davidhalter/jedi-vim'
@@ -191,3 +203,5 @@ augroup END
 
 let g:SimpylFold_fold_docstring = 0
 
+" R
+let r_indent_align_args = 0
